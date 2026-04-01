@@ -19,3 +19,17 @@ Open http://127.0.0.1:5000 in your browser.
 
 - App entry point: `waf_app.py`
 - Debug mode is enabled in the script for local development.
+
+## Deployment Notes
+
+This project is a Flask server app. A plain Netlify site deploy expects static files (for example `index.html`) and does not run this Flask server directly, which is why you can see a successful build but still get a 404 page.
+
+### Recommended: Deploy on Render
+
+1. Create a new **Web Service** on Render from this GitHub repo.
+2. Use:
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn waf_app:app`
+3. Deploy.
+
+Render will provide a public URL where your Flask app routes (`/`, `/rules`, `/dashboard`, etc.) work normally.
