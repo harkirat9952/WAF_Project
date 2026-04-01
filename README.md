@@ -26,10 +26,13 @@ This project is a Flask server app. A plain Netlify site deploy expects static f
 
 ### Recommended: Deploy on Render
 
-1. Create a new **Web Service** on Render from this GitHub repo.
-2. Use:
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `gunicorn waf_app:app`
-3. Deploy.
+1. Open Render dashboard and choose **New +** -> **Blueprint**.
+2. Select this GitHub repo (`harkirat9952/WAF_Project`).
+3. Render will auto-read [`render.yaml`](./render.yaml) and prefill settings.
+4. Click **Apply** to deploy.
+
+Manual fallback (if you choose Web Service instead of Blueprint):
+- Build Command: `pip install -r requirements.txt`
+- Start Command: `gunicorn waf_app:app --bind 0.0.0.0:$PORT`
 
 Render will provide a public URL where your Flask app routes (`/`, `/rules`, `/dashboard`, etc.) work normally.
